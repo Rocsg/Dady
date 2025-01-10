@@ -10,3 +10,7 @@ __pycache__/
 # Data
 data_config.json
 
+#IDE
+.vscode/
+
+

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='Dadypy',
-    version='1.0.0',
+    version='0.1.0',
     description='Dady package',
     author='Romain Fernandez',
     author_email='romain.fernandez@cirad.fr',
