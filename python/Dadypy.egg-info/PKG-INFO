@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: Dadypy
+Version: 0.1.0
+Summary: Dady package
+Author: Romain Fernandez
+Author-email: romain.fernandez@cirad.fr
+Requires-Dist: imagecodecs
+Requires-Dist: numpy
+Requires-Dist: tifffile

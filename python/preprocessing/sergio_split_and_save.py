@@ -1,7 +1,8 @@
+
 import tifffile as tiff
 import numpy as np
 import os
-
+from utils.read_data_config_from_json import get_user_data_path
 
 def to_separated_channels(input_image_path,output_basename_path):
     # Read the multi-slice TIFF
@@ -88,4 +89,6 @@ if(False):
         downsample_tiff(input_path+""+fich, output_path+""+fich,output_rgbpath+""+fich,downsample_factor)
 
 dir='/home/rfernandez/Bureau/A_Test/Test_Sergio/Data_4/RawHighRes'
-to_separated_channels(dir+"/2024_2_12_Andrano.tif",dir+"/channel_split/2024_2_12_Andrano")
+#to_separated_channels(dir+"/2024_2_12_Andrano.tif",dir+"/channel_split/2024_2_12_Andrano")
+
+print(get_user_data_path())

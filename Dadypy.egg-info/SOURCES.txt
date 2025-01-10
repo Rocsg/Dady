@@ -1,0 +1,6 @@
+setup.py
+Dadypy.egg-info/PKG-INFO
+Dadypy.egg-info/SOURCES.txt
+Dadypy.egg-info/dependency_links.txt
+Dadypy.egg-info/requires.txt
+Dadypy.egg-info/top_level.txt
