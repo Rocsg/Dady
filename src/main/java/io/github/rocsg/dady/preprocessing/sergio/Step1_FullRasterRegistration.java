@@ -1,14 +1,12 @@
-package io.github.rocsg.dady.preprocessing;
-
-import com.jogamp.nativewindow.util.Point;
+package io.github.rocsg.dady.preprocessing.sergio;
 
 import ij.IJ;
 import ij.ImageJ;
 import ij.ImagePlus;
-import ij.gui.PointRoi;
 import ij.gui.Roi;
 import ij.plugin.Duplicator;
 import ij.plugin.frame.RoiManager;
+import io.github.rocsg.dady.utils.DataHandling;
 import io.github.rocsg.dady.utils.RegistrationUtils;
 import io.github.rocsg.fijiyama.common.VitiDialogs;
 import io.github.rocsg.fijiyama.common.VitimageUtils;
@@ -19,9 +17,9 @@ import io.github.rocsg.fijiyama.registration.MetricType;
 import io.github.rocsg.fijiyama.registration.Transform3DType;
 import math3d.Point3d;
 
-public class SerieSergio_data4 {
+public class Step1_FullRasterRegistration {
     static double ratioFactorForSigmaComputation=25;
-    static String mainDir="/home/rfernandez/Bureau/A_Test/Test_Sergio/Data_4/";
+    static String mainDir;
     static String[]names=new String[]{
         /* "2024_2_12_Andrano.tif",*/
         "2024_2_27_Andrano.tif",
@@ -43,21 +41,59 @@ public class SerieSergio_data4 {
 
     public static void main(String[] args) {
         ImageJ ij=new ImageJ();
-        //createCombinedTransforms();
-        //resampleChannelsLowRes(1);
-            
+        mainDir=DataHandling.getUserPreprocessingDataPath();
+
+        //Step 1.0 is to preprocess the data (ndvi generation etc.) and to read voxel sizes to set the calibration.
+        //First, there is a script to run in python fo splitting the channels (overload for Java) : preprocessing/sergio_split_and_save.py
+        generateNdvi();
+        setVoxelSizes();
+
+
+
+        //Step 1.1 is to annotate the images couple for manual registration
+        if(false){
+            annotate(1);
+            annotate(2);
+            annotate(3);
+            annotate(4);
+        }
+        
+        //Step 1.2 is to use these annotations as landmarks for registration
+        if(false){
+            registerWithLandmarks(1);
+            registerWithLandmarks(2);
+            registerWithLandmarks(3);
+            registerWithLandmarks(4);
+        }
+
+        //Step 1.3 is an automatic registration using image2024_2_27_Andrano.tif as reference
+        if(false){
+            registerWithBlockMatching(1,0);
+            registerWithBlockMatching(2,0);
+            registerWithBlockMatching(3,0);
+            registerWithBlockMatching(4,0);
+        }
+
+        //Step 1.4 is an automatic registration without a bias using the fusion of 5 times as reference
+        if(false){
+            generateImgFusBm();
+            registerWithBlockMatching(1,1);
+            registerWithBlockMatching(2,1);
+            registerWithBlockMatching(3,1);
+            registerWithBlockMatching(4,1);
+        }
+
+
+        //Step 1.5 is creating the combined transform applying the succession of transformation as a single operator
+        createCombinedTransforms();
+
+        
+
+        //Step 1.6 is applying this combined transformation to the full size channels to generate the resampled raster. To this point, precision is almost 15 cm
+        resampleChannels(1);
+        resampleChannels(2);
+        resampleChannels(3);
         resampleChannels(4);
-        //openImages();
-        //setVoxelSizes();
-//        annotate(4);
-//      repair();
-        //registerWithLandmarks(4);
- /*        registerWithBlockMatching(1,0);
-        registerWithBlockMatching(2,0);
-        registerWithBlockMatching(3,0);
-        registerWithBlockMatching(4,0);*/
-//        evaluateMatchingBasedOnLandmarks(1);
-        //generateImgFusBm();
         System.out.println("OK");
     }
 
@@ -527,7 +563,7 @@ public class SerieSergio_data4 {
 
         }
     }
-
+    
     //STEP 1
     public static void generateNdvi(){
         String dirToRaw=mainDir+"Raw/";

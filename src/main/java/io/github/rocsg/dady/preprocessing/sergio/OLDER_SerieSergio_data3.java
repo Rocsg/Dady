@@ -1,4 +1,4 @@
-package io.github.rocsg.dady.preprocessing;
+package io.github.rocsg.dady.preprocessing.sergio;
 
 import ij.IJ;
 import ij.ImageJ;
@@ -17,7 +17,7 @@ import io.github.rocsg.fijiyama.registration.MetricType;
 import io.github.rocsg.fijiyama.registration.Transform3DType;
 import math3d.Point3d;
 
-public class SerieSergio_data3 {
+public class OLDER_SerieSergio_data3 {
     static String mainDir="/home/rfernandez/Bureau/Test_Sergio/Data_3/";
     static String twoImgDir=mainDir+"Tests_2img/";
     static String serieDir=mainDir+"Whole_serie/";

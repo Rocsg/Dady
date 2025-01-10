@@ -1,4 +1,4 @@
-package io.github.rocsg.dady.preprocessing;
+package io.github.rocsg.dady.preprocessing.sergio;
 
 import com.jogamp.nativewindow.util.Point;
 
@@ -13,7 +13,7 @@ import io.github.rocsg.fijiyama.registration.ItkTransform;
 import io.github.rocsg.fijiyama.registration.TransformUtils;
 import math3d.Point3d;
 
-public class Iterative_matching_sergio { 
+public class OLDER_Iterative_matching_sergio { 
     static double ratioFactorForSigmaComputation=25;
        
     public static void main(String[] args) {
