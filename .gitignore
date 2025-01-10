@@ -6,3 +6,7 @@ dady_env/
 __pycache__/
 *.pyc
 *.pyo
+
+# Data
+data_config.json
+
