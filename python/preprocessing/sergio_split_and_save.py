@@ -88,7 +88,8 @@ if(False):
         print(fich)
         downsample_tiff(input_path+""+fich, output_path+""+fich,output_rgbpath+""+fich,downsample_factor)
 
-dir='/home/rfernandez/Bureau/A_Test/Test_Sergio/Data_4/RawHighRes'
-#to_separated_channels(dir+"/2024_2_12_Andrano.tif",dir+"/channel_split/2024_2_12_Andrano")
+dir='/home/rfernandez/Bureau/A_Test/Test_Sergio/andrano 24-2-28 MS.tif'
+img="/home/rfernandez/Bureau/A_Test/Test_Sergio/andrano 24-2-28 MS.tif"
+to_separated_channels(img,"/home/rfernandez/Bureau/A_Test/Test_Sergio/Bordel_la/")
 
 print(get_user_data_path())

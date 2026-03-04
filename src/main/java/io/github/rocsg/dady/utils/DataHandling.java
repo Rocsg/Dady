@@ -13,6 +13,18 @@ public class DataHandling {
         return getPropertyInConfigJson("user_data_preprocessing_path");
     }
 
+
+    public static String[]getObservationDates(){
+        return new String[]{
+            /* "2024_2_12_Andrano.tif",*/
+            "2024_2_27_Andrano",
+            "2024_3_12_Andrano",
+            "2024_3_21_Andrano",
+            "2024_3_28_Andrano",
+            "2024_4_24_Andrano"        
+        };
+    }
+
     public static String getPropertyInConfigJson(String propertyKey) {
         String repoDir=System.getProperty("user.dir");
         // Chemin par défaut

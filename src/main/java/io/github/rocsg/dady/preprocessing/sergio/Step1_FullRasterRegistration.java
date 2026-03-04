@@ -20,7 +20,7 @@ import math3d.Point3d;
 public class Step1_FullRasterRegistration {
     static double ratioFactorForSigmaComputation=25;
     static String mainDir;
-    static String[]names=new String[]{
+    public final static String[]names=new String[]{
         /* "2024_2_12_Andrano.tif",*/
         "2024_2_27_Andrano.tif",
         "2024_3_12_Andrano.tif",
